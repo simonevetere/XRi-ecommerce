@@ -173,7 +173,6 @@
     <script>
     async function launchXR(modelPath) {
         
-        // Verifichiamo che la libreria del visore sia pronta
         if (typeof XRi !== 'undefined') {
            XRi.spawn("prod_1", modelPath, 1.5, { x: 0, y: 1, z: 0.5 },{ x: 0, y: 180, z: 0 }, true);
         }
@@ -184,8 +183,10 @@
         let current = parseInt(countEl.innerText);
         countEl.innerText = current + 1;
     };
-XRi.initMultiplayer();
-XRi.clearAll();
-</script>
+
+    XRi.initMultiplayer();
+    XRi.initWebXR();
+    XRi.clearAll();
+    </script>
 </body>
 </html>
