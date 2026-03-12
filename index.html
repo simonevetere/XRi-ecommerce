@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <script src="https://xri.onl/XRi.js"></script>
     
     <style>
@@ -176,8 +177,21 @@
 
     <script>
     async function launchXR(modelPath) {
+        // Determine real-world size in meters based on the garment type
+        let garmentSize = 1.5; // Default fallback size
+        
         if (typeof XRi !== 'undefined') {
-           XRi.spawn("prod_1", modelPath, 1.5, { x: 0, y: 1, z: 0.5 },{ x: 0, y: 180, z: 0 }, true);
+            if (modelPath.includes('jacket')) {
+                garmentSize = 0.80; // Jacket: 80 cm
+                XRi.spawn("jacket", modelPath, garmentSize, { x: 0, y: 1, z: 0.5 },{ x: 0, y: 180, z: 0 }, true);
+            } else if (modelPath.includes('trousers')) {
+                garmentSize = 1.00; // Trousers: 100 cm
+                XRi.spawn("trousers", modelPath, garmentSize, { x: 0, y: 1, z: 0.5 },{ x: 0, y: 180, z: 0 }, true);
+            } else if (modelPath.includes('t-shirt')) {
+                garmentSize = 0.70; // T-shirt: 70 cm
+                XRi.spawn("shirt", modelPath, garmentSize, { x: 0, y: 1, z: 0.5 },{ x: 0, y: 180, z: 0 }, true);
+            }
+                
         }
     };
 
@@ -187,10 +201,12 @@
         countEl.innerText = current + 1;
     };
 
-    // XRi Initialization
     if (typeof XRi !== 'undefined') {
+        // Initializes multiplayer features for the XR session
         XRi.initMultiplayer();
+        // Sets up the WebXR environment
         XRi.initWebXR();
+        // Clears any previously loaded items from the scene
         XRi.clearAll();
     }
     </script>
