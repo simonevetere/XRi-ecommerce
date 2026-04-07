@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <script src="https://xri.onl/XRi.js"></script>
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
     
     <style>
         /* BASE DARK THEME */
@@ -64,7 +66,7 @@
             transform: translateY(-5px);
         }
         
-        /* IMAGE BOX */
+        /* IMAGE BOX / MODEL VIEWER */
         .img-box {
             height: 300px;
             background: #050505;
@@ -76,14 +78,11 @@
             border: 1px solid #1a1a1a;
             overflow: hidden;
         }
-        .img-box img {
-            width: 90%;
-            height: 90%;
-            object-fit: contain;
-            transition: transform 0.5s ease;
-        }
-        .card:hover .img-box img {
-            transform: scale(1.05);
+        
+        model-viewer { 
+            width: 100%; 
+            height: 100%; 
+            --poster-color: transparent; 
         }
 
         .card h3 { font-size: 1.4rem; margin-bottom: 8px; letter-spacing: 1px; text-transform: uppercase; }
@@ -137,7 +136,12 @@
             
             <div class="card">
                 <div class="img-box">
-                    <img src="https://simonevetere.github.io/XRi-ecommerce-example/assets/img/jacket.png" alt="Tech Jacket">
+                    <model-viewer src="https://raw.githubusercontent.com/simonevetere/XRi-ecommerce-example/main/assets/3d/jacket.glb" 
+                                  auto-rotate 
+                                  camera-controls 
+                                  disable-zoom 
+                                  shadow-intensity="1">
+                    </model-viewer>
                 </div>
                 <h3>XR-1 Jacket</h3>
                 <div class="price">€ 189.00</div>
@@ -149,7 +153,12 @@
 
             <div class="card">
                 <div class="img-box">
-                    <img src="https://simonevetere.github.io/XRi-ecommerce-example/assets/img/trousers.png" alt="Tech Trousers">
+                    <model-viewer src="https://raw.githubusercontent.com/simonevetere/XRi-ecommerce-example/main/assets/3d/trousers.glb" 
+                                  auto-rotate 
+                                  camera-controls 
+                                  disable-zoom 
+                                  shadow-intensity="1">
+                    </model-viewer>
                 </div>
                 <h3>Tech Pants</h3>
                 <div class="price">€ 189.00</div>
@@ -161,7 +170,12 @@
 
             <div class="card">
                 <div class="img-box">
-                    <img src="https://simonevetere.github.io/XRi-ecommerce-example/assets/img/t-shirt.png" alt="Tech T-Shirt">
+                    <model-viewer src="https://raw.githubusercontent.com/simonevetere/XRi-ecommerce-example/main/assets/3d/t-shirt.glb" 
+                                  auto-rotate 
+                                  camera-controls 
+                                  disable-zoom 
+                                  shadow-intensity="1">
+                    </model-viewer>
                 </div>
                 <h3>Signature T-Shirt</h3>
                 <div class="price">€ 189.00</div>
